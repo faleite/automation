@@ -21,7 +21,7 @@
 
 ## Iniciando n8n
 ```bash
-~docker volume create n8n_data
+docker volume create n8n_data
 
 docker run -it --rm \
 --name n8n \
@@ -29,7 +29,7 @@ docker run -it --rm \
 -e GENERIC_TIMEZONE="Europe/Lisbon" \
  -e TZ="Europe/Lisbon" \
 -v n8n_data:/home/node/.n8n \
-docker.n8n.io/n8nio/n8n~
+docker.n8n.io/n8nio/n8n
 ```
 *Este comando baixará todas as imagens n8n necessárias e iniciará seu contêiner, exposto na porta `5678`. Para salvar seu trabalho entre reinicializações de contêiner, ele também monta um volume docker, `n8n_data`, para persistir seus dados localmente.*
 

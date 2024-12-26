@@ -20,20 +20,18 @@
 [last](https://docs.n8n.io/courses/level-one/chapter-1/#summary)
 
 ## Iniciando n8n
-```bash
-docker volume create n8n_data
+- Use o script n8n-docker.sh para iniciar o n8n em um contêiner docker
 
-docker run -it --rm \
---name n8n \
--p 5678:5678 \
--e GENERIC_TIMEZONE="Europe/Lisbon" \
- -e TZ="Europe/Lisbon" \
--v n8n_data:/home/node/.n8n \
-docker.n8n.io/n8nio/n8n
-```
-*Este comando baixará todas as imagens n8n necessárias e iniciará seu contêiner, exposto na porta `5678`. Para salvar seu trabalho entre reinicializações de contêiner, ele também monta um volume docker, `n8n_data`, para persistir seus dados localmente.*
+*Este comando baixará todas as imagens n8n necessárias e iniciará seu contêiner, exposto na porta `5678`. Para salvar seu trabalho entre reinicializações de contêiner, ele também monta um volume docker: `n8n_data` se nao houver, para persistir seus dados localmente.*
 
 > Você pode então acessar o n8n abrindo: http://localhost:5678
+
+## Executar comandos via CLI
+*Exemplo:*
+```bash
+docker exec -u node -it n8n n8n license:info # Onde `n8n license:info` é um comando n8n
+```
+- mais comandos em [cli-commands](https://docs.n8n.io/hosting/cli-commands/)
 
 ## Nós
 Você pode pensar nos nós como blocos de construção que desempenham diferentes funções e, quando reunidos, formam uma máquina funcional: um fluxo de trabalho automatizado.

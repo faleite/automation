@@ -43,3 +43,49 @@ Com base em sua função, o n8n classifica os nós em quatro tipos:
 - **Trigger Nodes** iniciam um fluxo de trabalho e fornecem os dados iniciais. Consulte a biblioteca **Trigger nodes** para obter uma lista completa de **trigger nodes**.
 - Os **Core Nodes** podem ser nós core ou de aplicativo. Enquanto a maioria dos nós se conecta a um serviço externo específico, os nós core fornecem funcionalidades como lógica, agendamento ou chamadas de API genéricas. Consulte a biblioteca **Core Nodes** para obter uma lista completa de nós core.
 - **Cluster Nodes** são grupos de nós que trabalham juntos para fornecer funcionalidade em um fluxo de trabalho. Consulte **Cluster nodes** para obter mais informações.
+
+## Register a phone number
+  ```bash
+curl -i -X POST \
+  'https://graph.facebook.com/v20.0/<phone_number_id>/register' \
+  -H 'Content-Type: application/json' \
+  -d '{\"messaging_product\": \"whatsapp\",
+    	\"pin": \"000000\",
+   		\"data_localization_region\": \"+351\"}"
+```
+
+```bash
+curl -i -X POST \
+  'https://graph.facebook.com/v21.0/<phone_number_id>/register' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "messaging_product": "whatsapp",
+    "cc": "+351",
+    "phone_number": "",
+    "method": "sms" or "voice",
+    "cert": <cert>,
+  	"pin": "000000"
+  }'
+```
+
+```bash
+curl -i -X POST \
+  'https://graph.facebook.com/v21.0/<phone_number_id>/messages' \
+  -H 'Authorization: Bearer <token_number>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "messaging_product": "whatsapp",
+    "to": "<phone_number>",
+    "type": "template",
+    "template": {
+      "name": "hello_world",
+      "language": {
+        "code": "en_US"
+      }
+    }
+  }'
+```
+
+
+## Referências
+- [How do you Get and Post from Whatsapp API](https://youtu.be/LKbAoSebZuk?si=QVN97OWMS02QC-Bg) `video` 
